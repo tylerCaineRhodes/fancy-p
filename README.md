@@ -13,9 +13,7 @@ of any length and prints it with a specified special character or str.
 You can also create your own print methods `pf_factory` method.
 
 
-```ruby
 ## Installation
-
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -36,6 +34,11 @@ p1 'Hello, world!'
 # => "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
 # => "Hello, world!"
 # => "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+```
+
+
+```rb
+require 'fancy-p'
 
 fp "@", "Hello, world!"
 # => "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
@@ -46,6 +49,10 @@ fp "@", "Hello, world!", length: 14
 # => "@@@@@@@@@@@@@@"
 # => "Hello, world!"
 # => "@@@@@@@@@@@@@@"
+```
+
+```rb
+require 'fancy-p'
 
 print_wat = fp_factory "WAT ", length: 10
 
@@ -59,3 +66,22 @@ print_wat['Some other string']
 # => "Some other string"
 # => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "
 ```
+
+
+## In a Rails Project
+
+To automatically load and initialize the gem in a Rails project, follow these steps:
+
+1. Add the gem to your Gemfile:
+```ruby
+gem 'fancy-p'
+```
+
+2. Run `bundle install`
+
+3. Create an initializer file in `config/initializers/fancy_p.rb` and add the following code:
+```ruby
+require 'fancy-p'
+```
+
+Now you can use the dynamic print methods anywhere in your Rails application, including controllers, models, views, and the Rails console.
