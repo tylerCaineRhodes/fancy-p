@@ -47,7 +47,7 @@ fp "@", "Hello, world!", length: 14
 # => "Hello, world!"
 # => "@@@@@@@@@@@@@@"
 
-print_wat = pf_factory "WAT ", length: 10
+print_wat = fp_factory "WAT ", length: 10
 
 print_wat['Hello, world!']
 # => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "
@@ -55,7 +55,6 @@ print_wat['Hello, world!']
 # => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "
 
 print_wat['Some other string']
-
 # => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "
 # => "Some other string"
 # => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "

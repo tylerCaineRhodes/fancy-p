@@ -21,7 +21,7 @@ module Kernel
     p delimiter
   end
 
-  def pf_factory(char, length: 100)
+  def fp_factory(char, length: 100)
     lambda { |*args|
       delimiter = char * length
       p delimiter
