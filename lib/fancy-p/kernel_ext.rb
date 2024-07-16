@@ -18,16 +18,13 @@ module Kernel
     p delimiter
   end
 
-  def fp(str, *args, length: 100)
-    delimiter = str * length
-    p delimiter
-    p(*args)
-    p delimiter
-  end
-
   def fp_factory(str, length: 100)
     lambda { |*args|
       fp(str, *args, length:)
     }
+  end
+
+  def fp(str, *args, length: 100)
+    print_surrounding(str, *args, length:)
   end
 end
