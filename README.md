@@ -79,9 +79,4 @@ gem 'fancy-p'
 
 2. Run `bundle install`
 
-3. Create an initializer file in `config/initializers/fancy_p.rb` and add the following code:
-```ruby
-require 'fancy-p'
-```
-
 Now you can use the dynamic print methods anywhere in your Rails application, including controllers, models, views, and the Rails console.
