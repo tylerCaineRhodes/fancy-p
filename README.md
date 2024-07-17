@@ -66,17 +66,3 @@ print_wat['Some other string']
 # => "Some other string"
 # => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "
 ```
-
-
-## In a Rails Project
-
-To automatically load and initialize the gem in a Rails project, follow these steps:
-
-1. Add the gem to your Gemfile:
-```ruby
-gem 'fancy-p'
-```
-
-2. Run `bundle install`
-
-Now you can use the dynamic print methods anywhere in your Rails application, including controllers, models, views, and the Rails console.
