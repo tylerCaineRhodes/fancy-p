@@ -6,12 +6,12 @@ module Kernel
 
     self.class.define_method(method_name) do |*forwarded_args|
       char = method_name.to_s[1]
-      print_surrounding(char, *forwarded_args)
+      fp(char, *forwarded_args)
     end
     send(method_name, *args)
   end
 
-  def print_surrounding(str, *args, length: 100)
+  def fp(str, *args, length: 100)
     delimiter = str * length
     p delimiter
     p(*args)
@@ -24,7 +24,9 @@ module Kernel
     }
   end
 
-  def fp(str, *args, length: 100)
-    print_surrounding(str, *args, length:)
+  def fp_define(str, length: 100, method_name: str.strip)
+    self.class.define_method("fp_#{method_name.strip}") do |*args|
+      fp(str, *args, length:)
+    end
   end
 end
