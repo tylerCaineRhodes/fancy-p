@@ -10,7 +10,8 @@ followed a similar pattern for `p 1 * 100`, `p2 * 100`, etc.
 For unpermitted characters, you can use the `fp` method, which takes a string
 of any length and prints it with a specified special character or str.
 
-You can also create your own print methods `pf_factory` method.
+You can also create your own print methods `pf_factory` method, or define a
+custom method with `fp_define` at the application level.
 
 
 ## Installation
@@ -23,46 +24,60 @@ gem 'fancy-p'
 ## Usage
 
 ```ruby
-require 'fancy-p'
-
 p! 'Hello, world!'
-# => "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+# => !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # => "Hello, world!"
-# => "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+# => !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 p1 'Hello, world!'
-# => "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+# => 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 # => "Hello, world!"
-# => "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+# => 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+p2 'Hello, world!'
+# => 2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+# => "Hello, world!"
+# => 2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
 ```
 
-
 ```rb
-require 'fancy-p'
-
 fp "@", "Hello, world!"
-# => "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+# => @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # => "Hello, world!"
-# => "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+# => @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 fp "@", "Hello, world!", length: 14
-# => "@@@@@@@@@@@@@@"
+# => @@@@@@@@@@@@@@
 # => "Hello, world!"
-# => "@@@@@@@@@@@@@@"
+# => @@@@@@@@@@@@@@
 ```
 
 ```rb
-require 'fancy-p'
-
 print_wat = fp_factory "WAT ", length: 10
 
 print_wat['Hello, world!']
-# => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "
+# => WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT 
 # => "Hello, world!"
-# => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "
+# => WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT 
 
 print_wat['Some other string']
-# => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "
+# => WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT 
 # => "Some other string"
-# => "WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT "
+# => WAT WAT WAT WAT WAT WAT WAT WAT WAT WAT 
+```
+
+```rb
+fp_define "foo", length: 1
+
+fp_foo "Hello, world!"
+# => foo
+# => "Hello, world!"
+# => foo
+
+fp_define "inappropriate ", length: 3, method_name: "work_appropriate"
+
+fp_work_appropriate "Hello, world!"
+# => inappropriate inappropriate inappropriate 
+# => "Hello, world!"
+# => inappropriate inappropriate inappropriate
 ```
