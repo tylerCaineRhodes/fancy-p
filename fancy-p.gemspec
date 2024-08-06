@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = "fancy-p"
-  s.version       = "0.4.0"
+  s.version       = "0.5.0"
   s.authors       = ["Tyler Rhodes"]
   s.email         = ["tyler.rhodes@aya.yale.edu"]
 
